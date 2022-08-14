@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import { getGames } from "../utils/api/game";
 import { Game } from "../utils/types/Game";
-import Image from "next/Image";
+import Image from "next/image";
 import titleBackground from "../public/title-background.png";
 import { Button } from "../components/Button";
 import { MapIcon } from "../icons/MapIcon";
