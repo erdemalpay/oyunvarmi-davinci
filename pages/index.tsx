@@ -6,7 +6,6 @@ import { Game } from "../utils/types/Game";
 import Image from "next/image";
 import titleBackground from "../public/title-background.png";
 import { Button } from "../components/Button";
-import { MapIcon } from "../icons/MapIcon";
 import { TableIcon } from "../icons/TableIcon";
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -18,8 +17,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
 };
 
 const Home = ({ games }: { games: Game[] }) => {
-  const [bahceliGames, setBahceliGames] = useState(games);
-  const [neoramaGames, setNeoramaGames] = useState(games);
+  const [bahceliGames, setBahceliGames] = useState<Game[]>([]);
+  const [neoramaGames, setNeoramaGames] = useState<Game[]>([]);
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
