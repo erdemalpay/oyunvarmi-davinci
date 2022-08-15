@@ -6,9 +6,7 @@ export function Button({ ...props }): JSX.Element {
           props.borderstyles ?? ""
         } w-0 h-0 border-t-transparent border-solid border-b-[28px] border-t-[28px] border-b-transparent border-r-[20px]`}
       ></div>
-      <button
-        className={`p-2 lg:p-4 font-germania w-full ${props.className ?? ""}`}
-      >
+      <button className={`p-2 font-germania w-full ${props.className ?? ""}`}>
         <div className="flex w-full justify-center items-center gap-2">
           {props.Icon && <props.Icon />}
           {props.children}
