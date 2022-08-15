@@ -146,7 +146,7 @@ const Home = ({ games }: { games: Game[] }) => {
           <div className="flex justify-between text-light-brown text-center min-h-full">
             <div className="flex flex-col w-[48%] overflow-y-auto">
               <div className="text-lg font-bold lg:text-3xl bg-dark-brown font-germania">
-                <h1>Da Vinci Bahçeli ({bahceliGames.length})</h1>
+                <h1>Bahçeli ({bahceliGames.length})</h1>
               </div>
               <div className="flex flex-col text-center text-lg font-merriweather text-black">
                 {bahceliGames?.map((game) => (
@@ -161,7 +161,7 @@ const Home = ({ games }: { games: Game[] }) => {
             </div>
             <div className="flex flex-col w-[48%] overflow-y-auto">
               <div className="text-lg font-bold lg:text-3xl bg-dark-brown font-germania">
-                <h1>Da Vinci Neorama ({neoramaGames.length})</h1>
+                <h1>Neorama ({neoramaGames.length})</h1>
               </div>
               <div className="flex flex-col text-center text-lg font-merriweather text-black">
                 {neoramaGames?.map((game) => (
