@@ -157,10 +157,10 @@ const Home = ({ games }: { games: Game[] }) => {
                     key={game._id}
                   >
                     {game.displayName || game.name}
-                  </h2>
+                  </h2> 
                 ))}
               </div>
-            </div>
+            </div> comment
             */}
             <div className="flex flex-col w-full overflow-y-auto">
               <div className="text-lg font-bold lg:text-3xl bg-dark-brown font-germania">
