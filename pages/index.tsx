@@ -160,7 +160,7 @@ const Home = ({ games }: { games: Game[] }) => {
                   </h2> 
                 ))}
               </div>
-            </div> comment
+            </div>
             */}
             <div className="flex flex-col w-full overflow-y-auto">
               <div className="text-lg font-bold lg:text-3xl bg-dark-brown font-germania">
