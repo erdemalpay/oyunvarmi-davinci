@@ -17,7 +17,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
 };
 
 const Home = ({ games }: { games: Game[] }) => {
-  const [bahceliGames, setBahceliGames] = useState<Game[]>([]);
+  // Bahçeli şubesi kapatıldı - ilgili kod yorumda bırakıldı
+  // const [bahceliGames, setBahceliGames] = useState<Game[]>([]);
   const [neoramaGames, setNeoramaGames] = useState<Game[]>([]);
   const [filter, setFilter] = useState("");
 
@@ -29,7 +30,7 @@ const Home = ({ games }: { games: Game[] }) => {
         .replace(/\s+/g, "")
         .includes(filter.toLowerCase().replace(/\s+/g, ""));
     });
-    setBahceliGames(filteredList.filter((game) => game.locations.includes(1)));
+    // setBahceliGames(filteredList.filter((game) => game.locations.includes(1)));
     setNeoramaGames(filteredList.filter((game) => game.locations.includes(2)));
   }, [games, filter]);
 
@@ -143,7 +144,8 @@ const Home = ({ games }: { games: Game[] }) => {
               className=" rounded-xl px-6 py-4 border-gray-200 w-full focus:outline-none text-dark-brown"
             ></input>
           </div>
-          <div className="flex justify-between text-light-brown text-center min-h-full">
+          <div className="flex justify-center text-light-brown text-center min-h-full">
+            {/* Bahçeli şubesi kapatıldı - UI kodu yorumda bırakıldı
             <div className="flex flex-col w-[48%] overflow-y-auto">
               <div className="text-lg font-bold lg:text-3xl bg-dark-brown font-germania">
                 <h1>Bahçeli ({bahceliGames.length})</h1>
@@ -159,7 +161,8 @@ const Home = ({ games }: { games: Game[] }) => {
                 ))}
               </div>
             </div>
-            <div className="flex flex-col w-[48%] overflow-y-auto">
+            */}
+            <div className="flex flex-col w-full overflow-y-auto">
               <div className="text-lg font-bold lg:text-3xl bg-dark-brown font-germania">
                 <h1>Neorama ({neoramaGames.length})</h1>
               </div>
