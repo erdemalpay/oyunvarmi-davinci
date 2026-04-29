@@ -111,7 +111,7 @@ const Home = ({ games }: { games: Game[] }) => {
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <div className="w-full h-screen overflow-hidden flex flex-col bg-dv-section-2 relative">
+      <div className="w-full h-screen overflow-hidden flex flex-col bg-[#F7F3ED] relative">
         <div className="pointer-events-none absolute inset-0 overflow-hidden z-0">
           <div className="absolute inset-0 opacity-[0.035] bg-[url('/images/davinci-logo-bg.png')] bg-repeat bg-[length:150px_150px] md:bg-[length:185px_185px] [filter:grayscale(1)_sepia(1)_hue-rotate(320deg)_saturate(16%)_brightness(1.14)]" />
         </div>
