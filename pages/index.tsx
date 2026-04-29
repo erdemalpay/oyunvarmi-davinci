@@ -113,7 +113,7 @@ const Home = ({ games }: { games: Game[] }) => {
       </Head>
       <div className="w-full h-screen overflow-hidden flex flex-col bg-dv-section-2 relative">
         <div className="pointer-events-none absolute inset-0 overflow-hidden z-0">
-          <div className="absolute inset-0 opacity-[0.04] bg-[url('/images/davinci-logo.png')] bg-repeat bg-[length:92px_92px] md:bg-[length:116px_116px] [filter:grayscale(1)_sepia(1)_hue-rotate(320deg)_saturate(18%)_brightness(1.12)]" />
+          <div className="absolute inset-0 opacity-[0.035] bg-[url('/images/davinci-logo-bg.png')] bg-repeat bg-[length:150px_150px] md:bg-[length:185px_185px] [filter:grayscale(1)_sepia(1)_hue-rotate(320deg)_saturate(16%)_brightness(1.14)]" />
         </div>
         <div className="flex w-full h-[82px] md:h-[92px] relative z-10">
           <div className="relative w-full overflow-hidden border-b border-black/10 shadow-dv-sm bg-[linear-gradient(180deg,#111827_0%,#1F2937_100%)]">
