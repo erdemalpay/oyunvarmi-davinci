@@ -34,3 +34,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local cursor skill (do not commit)
+/.cursor/skills/davinci-websitesi-referans/
