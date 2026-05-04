@@ -150,24 +150,26 @@ const Home = ({ games }: { games: Game[] }) => {
               </div>
             </a>
             <div className="flex items-center gap-2 md:gap-3 shrink-0">
+              <button
+                type="button"
+                onClick={() =>
+                  window
+                    .open(
+                      "https://yervarmi.davinciboardgame.com",
+                      "_blank",
+                      "noopener,noreferrer",
+                    )
+                    ?.focus()
+                }
+                className="shrink-0 flex items-center gap-1.5 bg-white/10 hover:bg-white/20 text-white text-xs md:text-sm font-body font-semibold px-3 md:px-4 py-2 rounded-full border border-white/20 transition-all duration-200 hover:-translate-y-0.5 whitespace-nowrap"
+              >
+                <TableIcon />
+                <span className="hidden sm:inline">
+                  {t("games.spotAvailableLong")}
+                </span>
+                <span className="sm:hidden">{t("games.spotAvailableShort")}</span>
+              </button>
               <LanguageToggle />
-            <button
-              type="button"
-              onClick={() =>
-                open &&
-                open(
-                  "https://yervarmi.davinciboardgame.com",
-                  "_blank",
-                )?.focus()
-              }
-              className="shrink-0 flex items-center gap-1.5 bg-white/10 hover:bg-white/20 text-white text-xs md:text-sm font-body font-semibold px-3 md:px-4 py-2 rounded-full border border-white/20 transition-all duration-200 hover:-translate-y-0.5 whitespace-nowrap"
-            >
-              <TableIcon />
-              <span className="hidden sm:inline">
-                {t("games.spotAvailableLong")}
-              </span>
-              <span className="sm:hidden">{t("games.spotAvailableShort")}</span>
-            </button>
             </div>
           </div>
         </header>
