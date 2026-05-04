@@ -5,7 +5,9 @@
     "logoAlt": "Da Vinci logosu",
     "langTr": "Türkçe",
     "langEn": "English",
-    "chooseLanguage": "Dil seçin"
+    "chooseLanguage": "Dil seçin",
+    "toggleToEnglish": "İngilizceye geç",
+    "toggleToTurkish": "Türkçeye geç"
   },
   "games": {
     "metaTitle": "Da Vinci'de bu oyun var mı?",
@@ -14,6 +16,17 @@
     "neoramaCount_one": "Neorama — {{count}} oyun",
     "neoramaCount_other": "Neorama — {{count}} oyun",
     "spotAvailableLong": "Oyunu bulduk. Yer var mı?",
-    "spotAvailableShort": "Yer var mı?"
+    "spotAvailableShort": "Yer var mı?",
+    "card": {
+      "bggRating": "BGG: {{score}}/10",
+      "bggPending": "BGG: —",
+      "favoriteToggle": "Favori",
+      "openBgg": "BoardGameGeek sayfasını aç",
+      "playersCount": "{{range}} Oyuncu",
+      "durationMinutes": "{{range}} dk",
+      "bestWith": "En iyi: {{n}}",
+      "weight": "Ağırlık: {{w}}",
+      "placeholder": "—"
+    }
   }
 }

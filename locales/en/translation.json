@@ -5,7 +5,9 @@
     "logoAlt": "Da Vinci logo",
     "langTr": "Turkish",
     "langEn": "English",
-    "chooseLanguage": "Choose language"
+    "chooseLanguage": "Choose language",
+    "toggleToEnglish": "Switch to English",
+    "toggleToTurkish": "Switch to Turkish"
   },
   "games": {
     "metaTitle": "Is this game available at Da Vinci?",
@@ -14,6 +16,17 @@
     "neoramaCount_one": "Neorama — {{count}} game",
     "neoramaCount_other": "Neorama — {{count}} games",
     "spotAvailableLong": "Found a game. Any tables left?",
-    "spotAvailableShort": "Any space?"
+    "spotAvailableShort": "Any space?",
+    "card": {
+      "bggRating": "BGG: {{score}}/10",
+      "bggPending": "BGG: —",
+      "favoriteToggle": "Favorite",
+      "openBgg": "Open BoardGameGeek page",
+      "playersCount": "{{range}} Players",
+      "durationMinutes": "{{range}} min",
+      "bestWith": "Best: {{n}}",
+      "weight": "Weight: {{w}}",
+      "placeholder": "—"
+    }
   }
 }

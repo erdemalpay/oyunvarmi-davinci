@@ -1,45 +1,60 @@
 import { useTranslation } from "react-i18next";
 
+/** Sabit yükseklik/genişlik: tek satır header’da taşma ve layout shift önlenir */
 export function LanguageToggle() {
   const { i18n, t } = useTranslation();
-  const active =
-    i18n.resolvedLanguage?.toLowerCase().startsWith("en") ? "en" : "tr";
 
-  const base =
-    "rounded-full px-2.5 py-1 text-[11px] md:text-xs font-body font-semibold transition-colors";
+  const toggleLanguage = () => {
+    const now = i18n.resolvedLanguage?.toLowerCase().startsWith("en")
+      ? "en"
+      : "tr";
+    void i18n.changeLanguage(now === "tr" ? "en" : "tr");
+  };
+
+  const currentLang = i18n.resolvedLanguage?.toLowerCase().startsWith("en")
+    ? "en"
+    : "tr";
 
   return (
-    <div
-      className="flex items-center rounded-full border border-white/25 bg-black/15 p-0.5 shrink-0"
-      role="group"
+    <button
+      type="button"
+      onClick={toggleLanguage}
+      className="relative box-border bg-white/10 backdrop-blur-sm rounded-full border border-white/20 shrink-0 flex flex-row items-center justify-center gap-[3px] touch-manipulation h-10 w-[56px] sm:h-[44px] sm:w-[62px] p-1 sm:p-[3px]"
+      title={
+        currentLang === "tr"
+          ? t("common.toggleToEnglish")
+          : t("common.toggleToTurkish")
+      }
       aria-label={t("common.chooseLanguage")}
     >
-      <button
-        type="button"
-        aria-pressed={active === "tr"}
-        aria-label={t("common.langTr")}
-        onClick={() => void i18n.changeLanguage("tr")}
-        className={`${base} ${
-          active === "tr"
-            ? "bg-white text-dv-black-deep"
-            : "text-white/85 hover:bg-white/10"
-        }`}
-      >
-        TR
-      </button>
-      <button
-        type="button"
-        aria-pressed={active === "en"}
-        aria-label={t("common.langEn")}
-        onClick={() => void i18n.changeLanguage("en")}
-        className={`${base} ${
-          active === "en"
-            ? "bg-white text-dv-black-deep"
-            : "text-white/85 hover:bg-white/10"
-        }`}
-      >
-        EN
-      </button>
-    </div>
+      <div className="flex items-center justify-center pointer-events-none shrink-0">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/assets/images/tr.png"
+          alt=""
+          width={44}
+          height={44}
+          className={`h-[22px] w-[22px] sm:h-7 sm:w-7 rounded-full object-cover transition-all duration-200 ${
+            currentLang === "tr"
+              ? "opacity-100 scale-100"
+              : "opacity-40 scale-95"
+          }`}
+        />
+      </div>
+      <div className="flex items-center justify-center pointer-events-none shrink-0">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/assets/images/abd.png"
+          alt=""
+          width={44}
+          height={44}
+          className={`h-[22px] w-[22px] sm:h-7 sm:w-7 rounded-full object-cover transition-all duration-200 ${
+            currentLang === "en"
+              ? "opacity-100 scale-100"
+              : "opacity-40 scale-95"
+          }`}
+        />
+      </div>
+    </button>
   );
 }
