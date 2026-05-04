@@ -115,9 +115,17 @@ const Home = ({ games }: { games: Game[] }) => {
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <div className="w-full h-screen overflow-hidden flex flex-col bg-[#F7F3ED] relative">
-        <div className="pointer-events-none absolute inset-0 overflow-hidden z-0">
-          <div className="absolute inset-0 opacity-[0.035] bg-[url('/images/davinci-logo-bg.png')] bg-repeat bg-[length:150px_150px] md:bg-[length:185px_185px] [filter:grayscale(1)_sepia(1)_hue-rotate(320deg)_saturate(16%)_brightness(1.14)]" />
-        </div>
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-0"
+          style={{
+            opacity: 0.07,
+            backgroundImage:
+              "linear-gradient(45deg, #1F2937 25%, transparent 25%), linear-gradient(-45deg, #1F2937 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #1F2937 75%), linear-gradient(-45deg, transparent 75%, #1F2937 75%)",
+            backgroundSize: "60px 60px",
+            backgroundPosition: "0 0, 0 30px, 30px -30px, -30px 0px",
+          }}
+        />
         <header
           style={{
             position: "relative",
