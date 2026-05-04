@@ -3,8 +3,8 @@ import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { getGames } from "../utils/api/game";
+import { gameCoverSrc } from "../utils/gameCoverSrc";
 import { Game } from "../utils/types/Game";
-import { Button } from "../components/Button";
 import { TableIcon } from "../icons/TableIcon";
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -123,94 +123,104 @@ const Home = ({ games }: { games: Game[] }) => {
             borderBottom: "1px solid rgba(255,255,255,0.06)",
             boxShadow: "0 2px 20px rgba(0,0,0,0.25)",
           }}
-          className="w-full h-16 flex items-center px-4 lg:px-8"
+          className="w-full min-h-[64px] md:min-h-[72px] flex items-center px-4 md:px-8 lg:px-12"
         >
-          <a
-            href="https://davinciboardgame.com/"
-            className="flex items-center gap-3"
-          >
-            <Image
-              src="/images/davinci-logo.png"
-              alt="Da Vinci Logo"
-              width={56}
-              height={56}
-              className="h-10 md:h-12 w-auto object-contain"
-            />
-            <div className="flex flex-col leading-tight">
-              <span className="font-display text-white text-lg md:text-xl">
-                Da Vinci
-              </span>
-              <span className="font-body text-white/75 text-xs md:text-sm tracking-[0.08em] uppercase">
-                Board Game Cafe
-              </span>
-            </div>
-          </a>
-        </header>
-
-        <div className="w-full max-w-6xl self-center flex-1 min-h-0 flex flex-col mt-6 md:mt-8 px-2 md:px-6 lg:px-10 pb-4 md:pb-6 relative z-10">
-          <h1 className="font-display font-semibold text-dv-black-deep text-2xl md:text-4xl leading-[1.1] mb-3">
-            Da Vinci&apos;de bu oyun var mı?
-          </h1>
-          <p className="font-body text-sm md:text-base text-dv-gray-600 mb-5">
-            Oyun adını yazarak Neorama envanterinde olup olmadığını hızlıca
-            kontrol et.
-          </p>
-          <div className="mb-5">
-            <input
-              placeholder="Bu oyun var mı..."
-              value={filter}
-              onChange={(event) => setFilter(event.target.value)}
-              className="rounded-2xl px-5 md:px-6 py-3.5 md:py-4 w-full focus:outline-none font-body text-dv-black bg-white/95 border border-black/10 shadow-dv-sm placeholder:text-dv-gray-500 focus:border-dv-red-light"
-            ></input>
-          </div>
-          <div className="flex justify-center text-white text-center mt-4 min-h-0 flex-1">
-            {/* Bahçeli şubesi kapatıldı - UI kodu yorumda bırakıldı
-            <div className="flex flex-col w-[48%] overflow-y-auto">
-              <div className="text-lg font-bold lg:text-3xl bg-dark-brown font-germania">
-                <h1>Bahçeli ({bahceliGames.length})</h1>
+          <div className="w-full flex justify-between items-center gap-3">
+            <a
+              href="https://davinciboardgame.com/"
+              className="flex items-center gap-3 min-w-0"
+            >
+              <Image
+                src="/images/davinci-logo.png"
+                alt="Da Vinci Logo"
+                width={56}
+                height={56}
+                className="h-9 md:h-11 w-auto object-contain shrink-0"
+              />
+              <div className="flex flex-col leading-tight">
+                <span className="font-display text-white text-base md:text-xl">
+                  Da Vinci
+                </span>
+                <span className="font-body text-white text-[10px] md:text-xs tracking-[0.08em] uppercase">
+                  Board Game
+                </span>
               </div>
-              <div className="flex flex-col text-center text-lg font-merriweather text-black">
-                {bahceliGames?.map((game) => (
-                  <h2
-                    className="py-2 border-dark-brown border-b-2"
-                    key={game._id}
-                  >
-                    {game.displayName || game.name}
-                  </h2> 
-                ))}
-              </div>
-            </div>
-            */}
-            <div className="flex flex-col w-full h-full overflow-y-auto rounded-2xl border border-black/10 bg-white/95 shadow-dv-md">
-              <div className="text-lg font-semibold lg:text-2xl bg-dv-bg-2 text-dv-black-deep font-display rounded-t-2xl py-3 md:py-4 border-b border-black/10">
-                <h1>Neorama ({neoramaGames.length})</h1>
-              </div>
-              <div className="flex flex-col text-center text-[15px] md:text-[17px] font-body text-dv-black leading-relaxed">
-                {neoramaGames?.map((game) => (
-                  <h2
-                    className="border-b border-black/10 py-2.5 px-3 md:px-4"
-                    key={game._id}
-                  >
-                    {game.displayName || game.name}
-                  </h2>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="mt-4 md:mt-5 lg:text-base text-sm flex items-center">
-            <Button
-              className="bg-dv-section-3 text-dv-black-deep border border-black/10 shadow-[0_8px_22px_rgba(31,41,55,0.12)] hover:bg-dv-bg-2 hover:text-dv-red-dark hover:shadow-[0_10px_24px_rgba(31,41,55,0.15)]"
-              Icon={TableIcon}
+            </a>
+            <button
+              type="button"
               onClick={() =>
                 open &&
-                open("https://yervarmi.davinciboardgame.com", "_blank")?.focus()
+                open(
+                  "https://yervarmi.davinciboardgame.com",
+                  "_blank",
+                )?.focus()
               }
+              className="shrink-0 flex items-center gap-1.5 bg-white/10 hover:bg-white/20 text-white text-xs md:text-sm font-body font-semibold px-3 md:px-4 py-2 rounded-full border border-white/20 transition-all duration-200 hover:-translate-y-0.5 whitespace-nowrap"
             >
-              {"Oyunu bulduk. Peki yer var mı?"}
-              <span className="hidden lg:flex">
-                {"(yervarmi.davinciboardgame.com)"}
+              <TableIcon />
+              <span className="hidden sm:inline">
+                Oyunu bulduk. Yer var mı?
               </span>
-            </Button>
+              <span className="sm:hidden">Yer var mı?</span>
+            </button>
+          </div>
+        </header>
+
+        <div className="w-full flex flex-col px-5 md:px-12 lg:px-16 xl:px-24 pt-4 pb-2 relative z-10">
+          <h1 className="font-display font-semibold text-dv-black-deep text-xl md:text-2xl leading-tight mb-2">
+            Da Vinci&apos;de bu oyun var mı?
+          </h1>
+          <input
+            placeholder="Bu oyun var mı..."
+            value={filter}
+            onChange={(event) => setFilter(event.target.value)}
+            className="rounded-2xl px-4 py-2.5 w-full focus:outline-none font-body text-dv-black bg-white/95 border border-black/10 shadow-dv-sm placeholder:text-dv-gray-500 focus:border-dv-red-light text-sm mb-2"
+          />
+          <p className="font-display text-sm md:text-base font-semibold text-dv-black-deep text-left mb-3">
+            Neorama &mdash; {neoramaGames.length} oyun
+          </p>
+        </div>
+
+        <div className="flex-1 min-h-0 overflow-y-auto relative z-10 px-5 md:px-12 lg:px-16 xl:px-24 pb-8">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2.5 md:gap-3">
+            {neoramaGames?.map((game) => {
+              const src = gameCoverSrc(game);
+              return (
+              <div
+                key={game._id}
+                className="relative group aspect-square overflow-hidden rounded-xl bg-dv-bg-2 shadow-md ring-1 ring-black/5"
+                style={
+                  {
+                    contentVisibility: "auto",
+                    containIntrinsicSize: "220px 220px",
+                  } as import("react").CSSProperties
+                }
+              >
+                {src ? (
+                  // doğrudan BGG; Next `/_next/image` yok — kalite için `game.image`
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
+                    src={src}
+                    alt={game.displayName || game.name}
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center p-2">
+                    <span className="text-[10px] text-center font-body text-dv-gray-600 leading-tight">
+                      {game.displayName || game.name}
+                    </span>
+                  </div>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-end p-1.5">
+                  <span className="text-white text-[10px] md:text-xs font-body font-medium leading-tight line-clamp-3">
+                    {game.displayName || game.name}
+                  </span>
+                </div>
+              </div>
+              );
+            })}
           </div>
         </div>
       </div>
