@@ -1,0 +1,19 @@
+{
+  "common": {
+    "appNameShort": "Da Vinci",
+    "boardGame": "Board Game",
+    "logoAlt": "Da Vinci logo",
+    "langTr": "Turkish",
+    "langEn": "English",
+    "chooseLanguage": "Choose language"
+  },
+  "games": {
+    "metaTitle": "Is this game available at Da Vinci?",
+    "pageHeading": "Is this game available at Da Vinci?",
+    "searchPlaceholder": "Search a game…",
+    "neoramaCount_one": "Neorama — {{count}} game",
+    "neoramaCount_other": "Neorama — {{count}} games",
+    "spotAvailableLong": "Found a game. Any tables left?",
+    "spotAvailableShort": "Any space?"
+  }
+}

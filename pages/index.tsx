@@ -2,9 +2,11 @@ import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { getGames } from "../utils/api/game";
 import { gameCoverSrc } from "../utils/gameCoverSrc";
 import { Game } from "../utils/types/Game";
+import { LanguageToggle } from "../components/LanguageToggle";
 import { TableIcon } from "../icons/TableIcon";
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -16,6 +18,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 };
 
 const Home = ({ games }: { games: Game[] }) => {
+  const { t } = useTranslation();
   // Bahçeli şubesi kapatıldı - ilgili kod yorumda bırakıldı
   // const [bahceliGames, setBahceliGames] = useState<Game[]>([]);
   const [neoramaGames, setNeoramaGames] = useState<Game[]>([]);
@@ -36,7 +39,7 @@ const Home = ({ games }: { games: Game[] }) => {
   return (
     <div>
       <Head>
-        <title>{`Da Vinci'de bu oyun var mı?`}</title>
+        <title>{t("games.metaTitle")}</title>
         <link
           rel="apple-touch-icon"
           sizes="57x57"
@@ -132,20 +135,22 @@ const Home = ({ games }: { games: Game[] }) => {
             >
               <Image
                 src="/images/davinci-logo.png"
-                alt="Da Vinci Logo"
+                alt={t("common.logoAlt")}
                 width={56}
                 height={56}
                 className="h-9 md:h-11 w-auto object-contain shrink-0"
               />
               <div className="flex flex-col leading-tight">
                 <span className="font-display text-white text-base md:text-xl">
-                  Da Vinci
+                  {t("common.appNameShort")}
                 </span>
                 <span className="font-body text-white text-[10px] md:text-xs tracking-[0.08em] uppercase">
-                  Board Game
+                  {t("common.boardGame")}
                 </span>
               </div>
             </a>
+            <div className="flex items-center gap-2 md:gap-3 shrink-0">
+              <LanguageToggle />
             <button
               type="button"
               onClick={() =>
@@ -159,25 +164,26 @@ const Home = ({ games }: { games: Game[] }) => {
             >
               <TableIcon />
               <span className="hidden sm:inline">
-                Oyunu bulduk. Yer var mı?
+                {t("games.spotAvailableLong")}
               </span>
-              <span className="sm:hidden">Yer var mı?</span>
+              <span className="sm:hidden">{t("games.spotAvailableShort")}</span>
             </button>
+            </div>
           </div>
         </header>
 
         <div className="w-full flex flex-col px-5 md:px-12 lg:px-16 xl:px-24 pt-4 pb-2 relative z-10">
           <h1 className="font-display font-semibold text-dv-black-deep text-xl md:text-2xl leading-tight mb-2">
-            Da Vinci&apos;de bu oyun var mı?
+            {t("games.pageHeading")}
           </h1>
           <input
-            placeholder="Bu oyun var mı..."
+            placeholder={t("games.searchPlaceholder")}
             value={filter}
             onChange={(event) => setFilter(event.target.value)}
             className="rounded-2xl px-4 py-2.5 w-full focus:outline-none font-body text-dv-black bg-white/95 border border-black/10 shadow-dv-sm placeholder:text-dv-gray-500 focus:border-dv-red-light text-sm mb-2"
           />
           <p className="font-display text-sm md:text-base font-semibold text-dv-black-deep text-left mb-3">
-            Neorama &mdash; {neoramaGames.length} oyun
+            {t("games.neoramaCount", { count: neoramaGames.length })}
           </p>
         </div>
 

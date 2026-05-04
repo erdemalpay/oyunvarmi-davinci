@@ -1,0 +1,19 @@
+{
+  "common": {
+    "appNameShort": "Da Vinci",
+    "boardGame": "Board Game",
+    "logoAlt": "Da Vinci logosu",
+    "langTr": "Türkçe",
+    "langEn": "English",
+    "chooseLanguage": "Dil seçin"
+  },
+  "games": {
+    "metaTitle": "Da Vinci'de bu oyun var mı?",
+    "pageHeading": "Da Vinci'de bu oyun var mı?",
+    "searchPlaceholder": "Bu oyun var mı...",
+    "neoramaCount_one": "Neorama — {{count}} oyun",
+    "neoramaCount_other": "Neorama — {{count}} oyun",
+    "spotAvailableLong": "Oyunu bulduk. Yer var mı?",
+    "spotAvailableShort": "Yer var mı?"
+  }
+}
