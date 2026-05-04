@@ -115,29 +115,37 @@ const Home = ({ games }: { games: Game[] }) => {
         <div className="pointer-events-none absolute inset-0 overflow-hidden z-0">
           <div className="absolute inset-0 opacity-[0.035] bg-[url('/images/davinci-logo-bg.png')] bg-repeat bg-[length:150px_150px] md:bg-[length:185px_185px] [filter:grayscale(1)_sepia(1)_hue-rotate(320deg)_saturate(16%)_brightness(1.14)]" />
         </div>
-        <div className="flex w-full h-[82px] md:h-[92px] relative z-10">
-          <div className="relative w-full overflow-hidden border-b border-black/10 shadow-dv-sm bg-[linear-gradient(180deg,#111827_0%,#1F2937_100%)]">
-            <div className="h-full relative px-4">
-              <div className="flex justify-center items-center h-full gap-3">
-                <Image
-                  src="/images/davinci-logo.png"
-                  alt="Da Vinci Logo"
-                  width={56}
-                  height={56}
-                  className="h-10 md:h-12 w-auto object-contain"
-                />
-                <div className="flex flex-col leading-tight">
-                  <span className="font-display text-white text-lg md:text-xl">
-                    Da Vinci
-                  </span>
-                  <span className="font-body text-white/75 text-xs md:text-sm tracking-[0.08em] uppercase">
-                    Board Game Cafe
-                  </span>
-                </div>
-              </div>
+        <header
+          style={{
+            position: "relative",
+            zIndex: 10,
+            background: "linear-gradient(180deg, #111827 0%, #1F2937 100%)",
+            borderBottom: "1px solid rgba(255,255,255,0.06)",
+            boxShadow: "0 2px 20px rgba(0,0,0,0.25)",
+          }}
+          className="w-full h-16 flex items-center px-4 lg:px-8"
+        >
+          <a
+            href="https://davinciboardgame.com/"
+            className="flex items-center gap-3"
+          >
+            <Image
+              src="/images/davinci-logo.png"
+              alt="Da Vinci Logo"
+              width={56}
+              height={56}
+              className="h-10 md:h-12 w-auto object-contain"
+            />
+            <div className="flex flex-col leading-tight">
+              <span className="font-display text-white text-lg md:text-xl">
+                Da Vinci
+              </span>
+              <span className="font-body text-white/75 text-xs md:text-sm tracking-[0.08em] uppercase">
+                Board Game Cafe
+              </span>
             </div>
-          </div>
-        </div>
+          </a>
+        </header>
 
         <div className="w-full max-w-6xl self-center flex-1 min-h-0 flex flex-col mt-6 md:mt-8 px-2 md:px-6 lg:px-10 pb-4 md:pb-6 relative z-10">
           <h1 className="font-display font-semibold text-dv-black-deep text-2xl md:text-4xl leading-[1.1] mb-3">
