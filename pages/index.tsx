@@ -175,7 +175,9 @@ const Home = ({ games }: { games: Game[] }) => {
                 <span className="hidden sm:inline">
                   {t("games.spotAvailableLong")}
                 </span>
-                <span className="sm:hidden">{t("games.spotAvailableShort")}</span>
+                <span className="sm:hidden">
+                  {t("games.spotAvailableShort")}
+                </span>
               </button>
               <LanguageToggle />
             </div>
@@ -201,40 +203,203 @@ const Home = ({ games }: { games: Game[] }) => {
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2.5 md:gap-3">
             {neoramaGames?.map((game) => {
               const src = gameCoverSrc(game);
+              const bgg = game.bggId;
+              const displayName = game.displayName || game.name;
               return (
-              <div
-                key={game._id}
-                className="relative group aspect-square overflow-hidden rounded-xl bg-dv-bg-2 shadow-md ring-1 ring-black/5"
-                style={
-                  {
-                    contentVisibility: "auto",
-                    containIntrinsicSize: "220px 220px",
-                  } as import("react").CSSProperties
-                }
-              >
-                {src ? (
-                  // doğrudan BGG; Next `/_next/image` yok — kalite için `game.image`
-                  /* eslint-disable-next-line @next/next/no-img-element */
-                  <img
-                    src={src}
-                    alt={game.displayName || game.name}
-                    loading="lazy"
-                    decoding="async"
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center p-2">
-                    <span className="text-[10px] text-center font-body text-dv-gray-600 leading-tight">
-                      {game.displayName || game.name}
-                    </span>
+                <div
+                  key={game._id}
+                  className="flip-card aspect-square shadow-md"
+                  style={
+                    {
+                      contentVisibility: "auto",
+                      containIntrinsicSize: "220px 220px",
+                    } as import("react").CSSProperties
+                  }
+                >
+                  <div className="flip-card-inner">
+                    {/* ÖN YÜZ */}
+                    <div className="flip-card-front bg-dv-bg-2 ring-1 ring-black/5">
+                      {src ? (
+                        /* eslint-disable-next-line @next/next/no-img-element */
+                        <img
+                          src={src}
+                          alt={displayName}
+                          loading="lazy"
+                          decoding="async"
+                          className="absolute inset-0 h-full w-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center p-2">
+                          <span className="text-[10px] text-center font-body text-dv-gray-600 leading-tight">
+                            {displayName}
+                          </span>
+                        </div>
+                      )}
+                      {/* Alt isim bandı */}
+                      <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 to-transparent px-2 pt-6 pb-2">
+                        <span className="text-white text-[10px] md:text-xs font-body font-medium leading-tight line-clamp-2">
+                          {displayName}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* ARKA YÜZ */}
+                    <div className="flip-card-back">
+                      {/* Arka plan görseli */}
+                      {src && (
+                        /* eslint-disable-next-line @next/next/no-img-element */
+                        <img
+                          src={src}
+                          alt={displayName}
+                          aria-hidden="true"
+                          className="absolute inset-0 h-full w-full object-cover"
+                        />
+                      )}
+                      {/* Koyu overlay */}
+                      <div className="absolute inset-0 bg-black/80" />
+
+                      {/* İçerik */}
+                      <div className="absolute inset-0 flex flex-col p-2 gap-1.5">
+                        {/* Üst: BGG + kalp */}
+                        <div className="flex items-center justify-between">
+                          {bgg?.geekRating ? (
+                            <div className="flex items-center gap-1 bg-black/60 rounded-full px-1.5 py-0.5 border border-white/10">
+                              <svg
+                                width="10"
+                                height="10"
+                                viewBox="0 0 24 24"
+                                fill="#FFD166"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                              </svg>
+                              <span className="text-white font-body font-bold text-[9px] leading-none drop-shadow">
+                                BGG: {bgg.geekRating.toFixed(1)}/10
+                              </span>
+                            </div>
+                          ) : (
+                            <div />
+                          )}
+                        </div>
+
+                        {/* Expansion rozeti */}
+                        {game.expansion && (
+                          <div className="flex justify-center">
+                            <span className="text-[8px] text-white/80 font-body font-bold tracking-widest uppercase border border-white/30 rounded px-1.5 py-0.5">
+                              EXPANSION
+                            </span>
+                          </div>
+                        )}
+
+                        {/* Boşluk */}
+                        <div className="flex-1" />
+
+                        {/* Alt: Oyun adı + istatistikler */}
+                        <div>
+                          <p className="text-white font-display font-semibold text-[12px] leading-tight mb-2 line-clamp-2 drop-shadow-md">
+                            {displayName}
+                          </p>
+                          {bgg && (
+                            <div className="grid grid-cols-2 gap-x-2 gap-y-1.5 bg-black/40 rounded-lg px-2 py-1.5">
+                              {/* Oyuncu sayısı */}
+                              {bgg.playersMin > 0 && (
+                                <div className="flex items-center gap-1.5">
+                                  <svg
+                                    width="12"
+                                    height="12"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="rgba(255,255,255,0.75)"
+                                    strokeWidth="2"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                    <circle cx="9" cy="7" r="4" />
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                  </svg>
+                                  <span className="text-white font-body text-[11px] leading-none drop-shadow">
+                                    {bgg.playersMin === bgg.playersMax
+                                      ? `${bgg.playersMin}`
+                                      : `${bgg.playersMin}-${bgg.playersMax}`}{" "}
+                                    Oyuncu
+                                  </span>
+                                </div>
+                              )}
+
+                              {/* Süre */}
+                              {(bgg.playTimeMin > 0 || bgg.playingTime > 0) && (
+                                <div className="flex items-center gap-1.5">
+                                  <svg
+                                    width="12"
+                                    height="12"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="rgba(255,255,255,0.75)"
+                                    strokeWidth="2"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12 6 12 12 16 14" />
+                                  </svg>
+                                  <span className="text-white font-body text-[11px] leading-none drop-shadow">
+                                    {bgg.playTimeMin > 0
+                                      ? bgg.playTimeMin === bgg.playTimeMax
+                                        ? `${bgg.playTimeMin}`
+                                        : `${bgg.playTimeMin}-${bgg.playTimeMax}`
+                                      : `${bgg.playingTime}`}{" "}
+                                    dk
+                                  </span>
+                                </div>
+                              )}
+
+                              {/* En iyi oyuncu sayısı */}
+                              {bgg.best?.length > 0 && (
+                                <div className="flex items-center gap-1.5">
+                                  <svg
+                                    width="12"
+                                    height="12"
+                                    viewBox="0 0 24 24"
+                                    fill="#FFD166"
+                                    stroke="#FFD166"
+                                    strokeWidth="0.5"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path d="M2 19h20v2H2v-2zM2 17l3-11 4.5 4.5L12 3l2.5 7.5L19 6l3 11H2z" />
+                                  </svg>
+                                  <span className="text-white font-body text-[11px] leading-none drop-shadow">
+                                    En iyi: {bgg.best.join(", ")}
+                                  </span>
+                                </div>
+                              )}
+
+                              {/* Ağırlık */}
+                              {bgg.avgWeight > 0 && (
+                                <div className="flex items-center gap-1.5">
+                                  <svg
+                                    width="12"
+                                    height="12"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="rgba(255,255,255,0.75)"
+                                    strokeWidth="2"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <circle cx="12" cy="5" r="3" />
+                                    <path d="M6.5 8a2 2 0 0 0-1.905 1.46L2 21h20l-2.596-11.54A2 2 0 0 0 17.5 8z" />
+                                  </svg>
+                                  <span className="text-white font-body text-[11px] leading-none drop-shadow">
+                                    Ağırlık: {bgg.avgWeight.toFixed(1)}
+                                  </span>
+                                </div>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-end p-1.5">
-                  <span className="text-white text-[10px] md:text-xs font-body font-medium leading-tight line-clamp-3">
-                    {game.displayName || game.name}
-                  </span>
                 </div>
-              </div>
               );
             })}
           </div>
