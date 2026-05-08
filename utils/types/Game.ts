@@ -23,4 +23,6 @@ export type Game = {
   narrationDurationPoint?: number;
   shortDescription?: string;
   metaUpdatedAt?: string;
+  shopifyPrice?: string | null;
+  shopifyUrl?: string | null;
 };

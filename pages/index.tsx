@@ -1,16 +1,18 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { LanguageToggle } from "../components/LanguageToggle";
+import { TableIcon } from "../icons/TableIcon";
 import { getGames } from "../utils/api/game";
 import { gameCoverSrc } from "../utils/gameCoverSrc";
 import { Game } from "../utils/types/Game";
-import { LanguageToggle } from "../components/LanguageToggle";
-import { TableIcon } from "../icons/TableIcon";
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const games = await getGames();
+  console.log("games", games);
   games.sort((a, b) => {
     return a.name > b.name ? 1 : -1;
   });
@@ -137,26 +139,25 @@ const Home = ({ games }: { games: Game[] }) => {
           className="w-full min-h-[64px] md:min-h-[72px] flex items-center px-4 md:px-8 lg:px-12"
         >
           <div className="w-full flex justify-between items-center gap-3">
-            <a
-              href="https://davinciboardgame.com/"
-              className="flex items-center gap-3 min-w-0"
-            >
-              <Image
-                src="/images/davinci-logo.png"
-                alt={t("common.logoAlt")}
-                width={56}
-                height={56}
-                className="h-9 md:h-11 w-auto object-contain shrink-0"
-              />
-              <div className="flex flex-col leading-tight">
-                <span className="font-display text-white text-base md:text-xl">
-                  {t("common.appNameShort")}
-                </span>
-                <span className="font-body text-white text-[10px] md:text-xs tracking-[0.08em] uppercase">
-                  {t("common.boardGame")}
-                </span>
-              </div>
-            </a>
+            <Link href="https://davinciboardgame.com/">
+              <a className="flex items-center gap-3 min-w-0">
+                <Image
+                  src="/images/davinci-logo.png"
+                  alt={t("common.logoAlt")}
+                  width={56}
+                  height={56}
+                  className="h-9 md:h-11 w-auto object-contain shrink-0"
+                />
+                <div className="flex flex-col leading-tight">
+                  <span className="font-display text-white text-base md:text-xl">
+                    {t("common.appNameShort")}
+                  </span>
+                  <span className="font-body text-white text-[10px] md:text-xs tracking-[0.08em] uppercase">
+                    {t("common.boardGame")}
+                  </span>
+                </div>
+              </a>
+            </Link>
             <div className="flex items-center gap-2 md:gap-3 shrink-0">
               <button
                 type="button"
@@ -260,10 +261,10 @@ const Home = ({ games }: { games: Game[] }) => {
 
                       {/* İçerik */}
                       <div className="absolute inset-0 flex flex-col p-2 gap-1.5">
-                        {/* Üst: BGG + kalp */}
-                        <div className="flex items-center justify-between">
+                        {/* Üst: BGG + Da Vinci fiyat badge */}
+                        <div className="flex flex-col gap-1">
                           {bgg?.geekRating ? (
-                            <div className="flex items-center gap-1 bg-black/60 rounded-full px-1.5 py-0.5 border border-white/10">
+                            <div className="flex items-center gap-1 bg-black/60 rounded-full px-1.5 py-0.5 border border-white/10 self-start">
                               <svg
                                 width="10"
                                 height="10"
@@ -279,6 +280,37 @@ const Home = ({ games }: { games: Game[] }) => {
                             </div>
                           ) : (
                             <div />
+                          )}
+                          {game.shopifyUrl && game.shopifyPrice && (
+                            <Link href={game.shopifyUrl} passHref>
+                              <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={(e) => e.stopPropagation()}
+                                className="flex items-center gap-1 bg-blue-600 hover:bg-blue-500 rounded-full px-1.5 py-0.5 self-start transition-colors"
+                              >
+                                <svg
+                                  width="9"
+                                  height="9"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="white"
+                                  strokeWidth="2.5"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <circle cx="9" cy="21" r="1" />
+                                  <circle cx="20" cy="21" r="1" />
+                                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                                </svg>
+                                <span className="text-white font-body font-bold text-[9px] leading-none">
+                                  Da Vinci{" "}
+                                  {Number(game.shopifyPrice).toLocaleString(
+                                    "tr-TR",
+                                  )}{" "}
+                                  ₺
+                                </span>
+                              </a>
+                            </Link>
                           )}
                         </div>
 
