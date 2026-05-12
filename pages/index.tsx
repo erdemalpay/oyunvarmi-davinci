@@ -1,4 +1,3 @@
-import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,13 +9,12 @@ import { getGames } from "../utils/api/game";
 import { gameCoverSrc } from "../utils/gameCoverSrc";
 import { Game } from "../utils/types/Game";
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps = async () => {
   const games = await getGames();
-  console.log("games", games);
   games.sort((a, b) => {
     return a.name > b.name ? 1 : -1;
   });
-  return { props: { games } };
+  return { props: { games }, revalidate: 300 };
 };
 
 const Home = ({ games }: { games: Game[] }) => {
