@@ -206,6 +206,7 @@ const Home = ({ games }: { games: Game[] }) => {
               const src = gameCoverSrc(game);
               const bgg = game.bggId;
               const displayName = game.displayName || game.name;
+              const storeProductUrl = game.onlineStoreUrl ?? game.shopifyUrl;
               return (
                 <div
                   key={game._id}
@@ -281,8 +282,8 @@ const Home = ({ games }: { games: Game[] }) => {
                           ) : (
                             <div />
                           )}
-                          {game.shopifyUrl && game.shopifyPrice && (
-                            <Link href={game.shopifyUrl} passHref>
+                          {storeProductUrl && game.shopifyPrice && (
+                            <Link href={storeProductUrl} passHref>
                               <a
                                 target="_blank"
                                 rel="noopener noreferrer"

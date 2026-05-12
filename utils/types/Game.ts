@@ -25,4 +25,5 @@ export type Game = {
   metaUpdatedAt?: string;
   shopifyPrice?: string | null;
   shopifyUrl?: string | null;
+  onlineStoreUrl?: string | null;
 };
