@@ -17,6 +17,8 @@
     "neoramaCount_other": "Neorama — {{count}} oyun",
     "spotAvailableLong": "Oyunu bulduk. Yer var mı?",
     "spotAvailableShort": "Yer var mı?",
+    "requestGameLong": "Oyun talep et",
+    "requestGameShort": "Talep et",
     "card": {
       "bggRating": "BGG: {{score}}/10",
       "bggPending": "BGG: —",

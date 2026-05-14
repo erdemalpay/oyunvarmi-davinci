@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LanguageToggle } from "../components/LanguageToggle";
+import { GameRequestIcon } from "../icons/GameRequestIcon";
 import { TableIcon } from "../icons/TableIcon";
 import { getGames } from "../utils/api/game";
 import { gameCoverSrc } from "../utils/gameCoverSrc";
@@ -146,7 +147,7 @@ const Home = ({ games }: { games: Game[] }) => {
                   height={56}
                   className="h-9 md:h-11 w-auto object-contain shrink-0"
                 />
-                <div className="flex flex-col leading-tight">
+                <div className="hidden sm:flex flex-col leading-tight">
                   <span className="font-display text-white text-base md:text-xl">
                     {t("common.appNameShort")}
                   </span>
@@ -156,9 +157,26 @@ const Home = ({ games }: { games: Game[] }) => {
                 </div>
               </a>
             </Link>
-            <div className="flex items-center gap-2 md:gap-3 shrink-0">
+            <div className="flex items-center gap-1.5 sm:gap-2 lg:gap-3 shrink-0">
+              <Link href="https://talep.kutuoyunual.com/" passHref>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={t("games.requestGameLong")}
+                  className="shrink-0 flex h-10 sm:w-[116px] lg:h-11 lg:w-auto items-center justify-center gap-1.5 bg-white/10 hover:bg-white/20 text-white text-xs lg:text-sm font-body font-semibold px-2.5 lg:px-5 py-2 rounded-full border border-white/20 transition-all duration-200 hover:-translate-y-0.5 whitespace-nowrap"
+                >
+                  <GameRequestIcon />
+                  <span className="hidden lg:inline">
+                    {t("games.requestGameLong")}
+                  </span>
+                  <span className="hidden sm:inline lg:hidden">
+                    {t("games.requestGameShort")}
+                  </span>
+                </a>
+              </Link>
               <button
                 type="button"
+                aria-label={t("games.spotAvailableLong")}
                 onClick={() =>
                   window
                     .open(
@@ -168,13 +186,13 @@ const Home = ({ games }: { games: Game[] }) => {
                     )
                     ?.focus()
                 }
-                className="shrink-0 flex items-center gap-1.5 bg-white/10 hover:bg-white/20 text-white text-xs md:text-sm font-body font-semibold px-3 md:px-4 py-2 rounded-full border border-white/20 transition-all duration-200 hover:-translate-y-0.5 whitespace-nowrap"
+                className="shrink-0 flex h-10 w-10 sm:w-[116px] lg:h-11 lg:w-auto items-center justify-center gap-1.5 bg-white/10 hover:bg-white/20 text-white text-xs lg:text-sm font-body font-semibold px-2.5 lg:px-5 py-2 rounded-full border border-white/20 transition-all duration-200 hover:-translate-y-0.5 whitespace-nowrap"
               >
                 <TableIcon />
-                <span className="hidden sm:inline">
+                <span className="hidden lg:inline">
                   {t("games.spotAvailableLong")}
                 </span>
-                <span className="sm:hidden">
+                <span className="hidden sm:inline lg:hidden">
                   {t("games.spotAvailableShort")}
                 </span>
               </button>

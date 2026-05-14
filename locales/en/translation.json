@@ -17,6 +17,8 @@
     "neoramaCount_other": "Neorama — {{count}} games",
     "spotAvailableLong": "Found a game. Any tables left?",
     "spotAvailableShort": "Any space?",
+    "requestGameLong": "Request a game",
+    "requestGameShort": "Request",
     "card": {
       "bggRating": "BGG: {{score}}/10",
       "bggPending": "BGG: —",
