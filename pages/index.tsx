@@ -280,7 +280,7 @@ const Home = ({ games }: { games: Game[] }) => {
                       <div className="absolute inset-0 flex flex-col p-2 gap-1.5">
                         {/* Üst: BGG + Da Vinci fiyat badge */}
                         <div className="flex flex-col gap-1">
-                          {bgg?.geekRating ? (
+                          {bgg?.GeekRating ? (
                             <div className="flex items-center gap-1 bg-black/60 rounded-full px-1.5 py-0.5 border border-white/10 self-start">
                               <svg
                                 width="10"
@@ -292,7 +292,7 @@ const Home = ({ games }: { games: Game[] }) => {
                                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                               </svg>
                               <span className="text-white font-body font-bold text-[9px] leading-none drop-shadow">
-                                BGG: {bgg.geekRating.toFixed(1)}/10
+                                BGG: {bgg.GeekRating.toFixed(1)}/10
                               </span>
                             </div>
                           ) : (
@@ -351,7 +351,7 @@ const Home = ({ games }: { games: Game[] }) => {
                           {bgg && (
                             <div className="grid grid-cols-2 gap-x-2 gap-y-1.5 bg-black/40 rounded-lg px-2 py-1.5">
                               {/* Oyuncu sayısı */}
-                              {bgg.playersMin > 0 && (
+                              {bgg.PlayersMin > 0 && (
                                 <div className="flex items-center gap-1.5">
                                   <svg
                                     width="12"
@@ -368,16 +368,16 @@ const Home = ({ games }: { games: Game[] }) => {
                                     <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                                   </svg>
                                   <span className="text-white font-body text-[11px] leading-none drop-shadow">
-                                    {bgg.playersMin === bgg.playersMax
-                                      ? `${bgg.playersMin}`
-                                      : `${bgg.playersMin}-${bgg.playersMax}`}{" "}
+                                    {bgg.PlayersMin === bgg.PlayersMax
+                                      ? `${bgg.PlayersMin}`
+                                      : `${bgg.PlayersMin}-${bgg.PlayersMax}`}{" "}
                                     Oyuncu
                                   </span>
                                 </div>
                               )}
 
                               {/* Süre */}
-                              {(bgg.playTimeMin > 0 || bgg.playingTime > 0) && (
+                              {(bgg.PlayTimeMin > 0 || bgg.PlayingTime > 0) && (
                                 <div className="flex items-center gap-1.5">
                                   <svg
                                     width="12"
@@ -392,18 +392,18 @@ const Home = ({ games }: { games: Game[] }) => {
                                     <polyline points="12 6 12 12 16 14" />
                                   </svg>
                                   <span className="text-white font-body text-[11px] leading-none drop-shadow">
-                                    {bgg.playTimeMin > 0
-                                      ? bgg.playTimeMin === bgg.playTimeMax
-                                        ? `${bgg.playTimeMin}`
-                                        : `${bgg.playTimeMin}-${bgg.playTimeMax}`
-                                      : `${bgg.playingTime}`}{" "}
+                                    {bgg.PlayTimeMin > 0
+                                      ? bgg.PlayTimeMin === bgg.PlayTimeMax
+                                        ? `${bgg.PlayTimeMin}`
+                                        : `${bgg.PlayTimeMin}-${bgg.PlayTimeMax}`
+                                      : `${bgg.PlayingTime}`}{" "}
                                     dk
                                   </span>
                                 </div>
                               )}
 
                               {/* En iyi oyuncu sayısı */}
-                              {bgg.best?.length > 0 && (
+                              {bgg.Best?.length > 0 && (
                                 <div className="flex items-center gap-1.5">
                                   <svg
                                     width="12"
@@ -417,13 +417,13 @@ const Home = ({ games }: { games: Game[] }) => {
                                     <path d="M2 19h20v2H2v-2zM2 17l3-11 4.5 4.5L12 3l2.5 7.5L19 6l3 11H2z" />
                                   </svg>
                                   <span className="text-white font-body text-[11px] leading-none drop-shadow">
-                                    En iyi: {bgg.best.join(", ")}
+                                    En iyi: {bgg.Best.join(", ")}
                                   </span>
                                 </div>
                               )}
 
                               {/* Ağırlık */}
-                              {bgg.avgWeight > 0 && (
+                              {bgg.AvgWeight > 0 && (
                                 <div className="flex items-center gap-1.5">
                                   <svg
                                     width="12"
@@ -438,7 +438,7 @@ const Home = ({ games }: { games: Game[] }) => {
                                     <path d="M6.5 8a2 2 0 0 0-1.905 1.46L2 21h20l-2.596-11.54A2 2 0 0 0 17.5 8z" />
                                   </svg>
                                   <span className="text-white font-body text-[11px] leading-none drop-shadow">
-                                    Ağırlık: {bgg.avgWeight.toFixed(1)}
+                                    Ağırlık: {bgg.AvgWeight.toFixed(1)}
                                   </span>
                                 </div>
                               )}

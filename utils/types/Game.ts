@@ -1,14 +1,19 @@
 export type BggInfo = {
   _id: number;
   name: string;
-  avgWeight: number;
-  best: number[];
-  geekRating: number;
-  playTimeMax: number;
-  playTimeMin: number;
-  playersMax: number;
-  playersMin: number;
-  playingTime: number;
+  AvgRating: number;
+  AvgWeight: number;
+  Best: number[];
+  GeekRating: number;
+  MinPlayerAge: number;
+  OverallRank: number;
+  PlayTimeMax: number;
+  PlayTimeMin: number;
+  PlayersMax: number;
+  PlayersMin: number;
+  PlayingTime: number;
+  Recommended: number[];
+  YearPublished: number;
 };
 
 export type Game = {
