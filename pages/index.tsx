@@ -24,6 +24,11 @@ const Home = ({ games }: { games: Game[] }) => {
   // const [bahceliGames, setBahceliGames] = useState<Game[]>([]);
   const [neoramaGames, setNeoramaGames] = useState<Game[]>([]);
   const [filter, setFilter] = useState("");
+  const [flippedId, setFlippedId] = useState<string | number | null>(null);
+
+  useEffect(() => {
+    setFlippedId(null);
+  }, [filter]);
 
   useEffect(() => {
     const filteredList = games?.filter((game) => {
@@ -226,7 +231,17 @@ const Home = ({ games }: { games: Game[] }) => {
               return (
                 <div
                   key={game._id}
-                  className="flip-card aspect-square shadow-md"
+                  className={`flip-card aspect-square shadow-md cursor-pointer${flippedId === game._id ? " flipped" : ""}`}
+                  onClick={() => setFlippedId(flippedId === game._id ? null : game._id)}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={flippedId === game._id}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setFlippedId(flippedId === game._id ? null : game._id);
+                    }
+                  }}
                   style={
                     {
                       contentVisibility: "auto",
