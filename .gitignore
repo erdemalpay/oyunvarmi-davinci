@@ -38,3 +38,12 @@ next-env.d.ts
 
 # local cursor skill (do not commit)
 /.cursor/skills/davinci-websitesi-referans/
+
+# Claude Code local config & memory
+/.claude/
+
+# IDE config
+/.idea/
+
+# Claude-generated planning docs
+/docs/

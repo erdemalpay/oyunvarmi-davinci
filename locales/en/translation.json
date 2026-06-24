@@ -29,6 +29,46 @@
       "bestWith": "Best: {{n}}",
       "weight": "Weight: {{w}}",
       "placeholder": "—"
+    },
+    "openFinder": "What Shall We Play?",
+    "finder": {
+      "title": "What Shall We Play?",
+      "subtitle": "Answer a few questions, we'll suggest the best games for you",
+      "players": "How many players?",
+      "time": "How much time do you have?",
+      "difficulty": "Difficulty",
+      "type": "Type",
+      "any": "Any",
+      "submit": "Suggest",
+      "clear": "Clear",
+      "stepLabel": "Step {{current}} / {{total}}",
+      "back": "Back",
+      "skip": "Skip",
+      "next": "Next",
+      "restart": "Start over",
+      "hintSingle": "Pick one to continue",
+      "hintMulti": "Pick one or more",
+      "playersSummary": "{{count}} players",
+      "resultsTitle": "Picks for you",
+      "showAll": "All matches ({{count}})",
+      "empty": "No games matched — try loosening the filters.",
+      "time_lt30": "Under 30 min",
+      "time_30_60": "30-60 min",
+      "time_60_120": "60-120 min",
+      "time_gt120": "120 min+",
+      "diff_easy": "Easy",
+      "diff_medium": "Medium",
+      "diff_hard": "Heavy",
+      "reasonBestAt": "Best with {{count}}",
+      "reasonTime": "{{count}} min",
+      "subdomain": {
+        "strategy": "Strategy",
+        "family": "Family",
+        "party": "Party",
+        "thematic": "Thematic",
+        "abstract": "Abstract",
+        "children": "Children's"
+      }
     }
   }
 }

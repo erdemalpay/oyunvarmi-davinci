@@ -13,6 +13,8 @@ export type BggInfo = {
   PlayersMin: number;
   PlayingTime: number;
   Recommended: number[];
+  Subdomains?: number[];
+  Categories?: number[];
   YearPublished: number;
 };
 
@@ -31,4 +33,5 @@ export type Game = {
   shopifyPrice?: string | null;
   shopifyUrl?: string | null;
   onlineStoreUrl?: string | null;
+  davinciGame?: boolean;
 };

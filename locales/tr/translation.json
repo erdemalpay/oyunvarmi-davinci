@@ -29,6 +29,46 @@
       "bestWith": "En iyi: {{n}}",
       "weight": "Ağırlık: {{w}}",
       "placeholder": "—"
+    },
+    "openFinder": "Ne Oynasak",
+    "finder": {
+      "title": "Ne Oynasak",
+      "subtitle": "Birkaç soru, sana en uygun oyunları önerelim",
+      "players": "Kaç kişisiniz?",
+      "time": "Ne kadar vaktiniz var?",
+      "difficulty": "Zorluk",
+      "type": "Tür",
+      "any": "Farketmez",
+      "submit": "Öner",
+      "clear": "Temizle",
+      "stepLabel": "Adım {{current}} / {{total}}",
+      "back": "Geri",
+      "skip": "Atla",
+      "next": "İleri",
+      "restart": "Baştan başla",
+      "hintSingle": "Bir seçenek seç, sıradakine geçelim",
+      "hintMulti": "Birden çok seçebilirsin",
+      "playersSummary": "{{count}} kişi",
+      "resultsTitle": "Senin için öneriler",
+      "showAll": "Tüm eşleşmeler ({{count}})",
+      "empty": "Bu kriterlerle oyun bulunamadı — biraz gevşetmeyi dene.",
+      "time_lt30": "30 dk'dan az",
+      "time_30_60": "30-60 dk",
+      "time_60_120": "60-120 dk",
+      "time_gt120": "120 dk+",
+      "diff_easy": "Kolay",
+      "diff_medium": "Orta",
+      "diff_hard": "Ağır",
+      "reasonBestAt": "{{count}} kişide en iyi",
+      "reasonTime": "{{count}} dk",
+      "subdomain": {
+        "strategy": "Strateji",
+        "family": "Aile",
+        "party": "Parti",
+        "thematic": "Tematik",
+        "abstract": "Soyut",
+        "children": "Çocuk"
+      }
     }
   }
 }
