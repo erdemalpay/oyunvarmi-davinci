@@ -37,13 +37,12 @@ const Home = ({ games }: { games: Game[] }) => {
   }, [filter]);
 
   useEffect(() => {
-    const filteredList = games?.filter((game) => {
-      return game.name
-        .replace("İ", "I")
-        .toLowerCase()
-        .replace(/\s+/g, "")
-        .includes(filter.toLowerCase().replace(/\s+/g, ""));
-    });
+    const normalize = (s: string) =>
+      s.replace(/İ/g, "I").toLowerCase().replace(/\s+/g, "");
+    const query = normalize(filter);
+    const filteredList = games?.filter((game) =>
+      normalize(game.name).includes(query),
+    );
     // setBahceliGames(filteredList.filter((game) => game.locations.includes(1)));
     setNeoramaGames(filteredList.filter((game) => game.locations.includes(2)));
   }, [games, filter]);
@@ -175,11 +174,23 @@ const Home = ({ games }: { games: Game[] }) => {
                 aria-label={t("games.openFinder")}
                 className="shrink-0 flex h-10 lg:h-11 items-center justify-center gap-1.5 bg-dv-red hover:bg-dv-red-light text-white text-xs lg:text-sm font-body font-semibold px-3 lg:px-5 py-2 rounded-full transition-all duration-200 hover:-translate-y-0.5 whitespace-nowrap"
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <circle cx="11" cy="11" r="8" />
                   <path d="m21 21-4.3-4.3" />
                 </svg>
-                <span className="hidden sm:inline">{t("games.openFinder")}</span>
+                <span className="hidden sm:inline">
+                  {t("games.openFinder")}
+                </span>
               </button>
               <Link href="https://talep.kutuoyunual.com/" passHref>
                 <a
@@ -246,7 +257,9 @@ const Home = ({ games }: { games: Game[] }) => {
                 key={game._id}
                 game={game}
                 flipped={flippedId === game._id}
-                onToggle={() => setFlippedId(flippedId === game._id ? null : game._id)}
+                onToggle={() =>
+                  setFlippedId(flippedId === game._id ? null : game._id)
+                }
               />
             ))}
           </div>
