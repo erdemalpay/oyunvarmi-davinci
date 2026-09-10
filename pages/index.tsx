@@ -16,11 +16,7 @@ export const getStaticProps = async () => {
   games.sort((a, b) => {
     return a.name > b.name ? 1 : -1;
   });
-  // ISR (revalidate) kaldırıldı: /shopify/games 15-19 sn sürdüğü için Vercel'in
-  // arka plan yenileme fonksiyonu her seferinde süre limitine takılıyor ve sayfa
-  // aylarca donmuş bir snapshot olarak kalıyordu. Sayfa artık yalnızca build
-  // sırasında üretiliyor; veri değiştiğinde yeni bir deploy tetiklenmeli.
-  return { props: { games } };
+  return { props: { games }, revalidate: 300 };
 };
 
 const Home = ({ games }: { games: Game[] }) => {
